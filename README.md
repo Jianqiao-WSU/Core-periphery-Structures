@@ -9,5 +9,5 @@ Before installing this package, make sure that you have a **Python with version 
 `pip` is the most easiest way to install:
 
 ```bash
-pip install cpnet
+pip install cpnet==0.0.6
 ```
