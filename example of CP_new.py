@@ -32,4 +32,6 @@ fig = plt.figure(figsize=(8, 6))
 ax = plt.gca()
 ax, pos = cpnet.draw(G, c, x, ax)
 ax, _ = cpnet.draw(G, c, x, ax, pos=pos)
+nx.draw_networkx_labels(G, pos)
+
 plt.show()
