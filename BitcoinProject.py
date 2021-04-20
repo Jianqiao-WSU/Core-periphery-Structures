@@ -29,5 +29,3 @@ with open('dataset/soc-sign-bitcoinotc.csv') as read_obj:
         g.add_edge(row[0], row[1], weight = row[2])
 
 print(nx.info(g))
-
-print("hello")
