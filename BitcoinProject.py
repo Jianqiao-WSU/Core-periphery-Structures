@@ -22,7 +22,7 @@ from csv import reader
 
 g = nx.Graph()
 
-with open('/dataset/soc-sign-bitcoinotc.csv') as read_obj:
+with open('dataset/soc-sign-bitcoinotc.csv') as read_obj:
     csv_reader = reader(read_obj)
     for row in csv_reader:
         # print(row[2])
