@@ -16,3 +16,11 @@ b = algorithm.get_pair_id()
 y = algorithm.get_coreness()
 
 print (y)
+#plot the graph
+fig = plt.figure(figsize=(8, 6))
+ax = plt.gca()
+ax, pos = cpnet.draw(g, b, y, ax)
+ax, _ = cpnet.draw(g, b, y, ax, pos=pos)
+nx.draw_networkx_labels(g, pos)
+
+plt.show()
