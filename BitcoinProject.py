@@ -24,7 +24,7 @@ df = pd.read_csv('dataset/soc-sign-bitcoinotc.csv',usecols=[0,1,2], names=['sour
 # print(df)
 g = nx.from_pandas_edgelist(df)
 
-# print(nx.info(g))
+print(nx.info(g))
 
 kmconfig = cpnet.KM_config()
 kmconfig.detect(g)
@@ -39,15 +39,37 @@ edgeWeight = 0
 #     for row in csv_reader:
 #         print(row)
 
-# Read csv row wise.
-with open('dataset/soc-sign-bitcoinotc.csv', 'r') as fin:
-    csv_reader = reader(fin)
-    for key, value in b.items():
-        if value > 0:
-            for row in csv_reader:
-                if key is row[0]:
-                    edgeWeight += row[2]
+df.sort_values(["source"], axis=0,
+                 ascending=True, inplace=True)
 
+sourceList = []
+
+for key, value in b.items():
+    if value > 0:
+        sourceList.append(key)
+    
+print(sourceList)
+
+# Read csv row wise.
+# with open('dataset/soc-sign-bitcoinotc.csv', 'r') as fin:
+#     csv_reader = reader(fin)
+#     for key, value in b.items():
+#         if value > 0:
+#             for row in csv_reader:
+#                 print(key)
+#                 if key == row[0]:
+#                     # print(row[0])
+#                     edgeWeight += int(row[2])
+                   
+# with open('dataset/soc-sign-bitcoinotc.csv', 'r') as fin:
+#     csv_reader = reader(fin)
+#     for row in csv_reader:
+#         for key, value in b.items():
+#             if value > 0:
+
+
+# print(n)
+# print(edgeWeight)
 
 
 
