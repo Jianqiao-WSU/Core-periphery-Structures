@@ -14,24 +14,24 @@ c = kmconfig.get_pair_id()
 x = kmconfig.get_coreness()
 
 # Printing node ID and group ID.
-print("{:<10} {:<10}".format('Node_ID', 'Group ID'))
+# print("{:<10} {:<10}".format('Node_ID', 'Group ID'))
 
-for key, value in c.items():
-    print("{:<10} {:<10}".format(key, value))
+# for key, value in c.items():
+#     print("{:<10} {:<10}".format(key, value))
 
-print("\n")
+# print("\n")
 #Printing node ID and Coreness.
 print("{:<10} {:<10}".format('Node_ID', 'Coreness'))
 
 for key, value in x.items():
     print("{:<10} {:<10}".format(key, value))
     
-print(nx.info(G))
+# print(nx.info(G))
 
-fig = plt.figure(figsize=(8, 6))
-ax = plt.gca()
-ax, pos = cpnet.draw(G, c, x, ax)
-ax, _ = cpnet.draw(G, c, x, ax, pos=pos)
-nx.draw_networkx_labels(G, pos)
+# fig = plt.figure(figsize=(8, 6))
+# ax = plt.gca()
+# ax, pos = cpnet.draw(G, c, x, ax)
+# ax, _ = cpnet.draw(G, c, x, ax, pos=pos)
+# nx.draw_networkx_labels(G, pos)
 
-plt.show()
+# plt.show()

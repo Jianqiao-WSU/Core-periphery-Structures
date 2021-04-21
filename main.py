@@ -8,10 +8,10 @@ import cpnet
 # df = pd.read_csv('dataset/soc-sign-bitcoinotc-with no time.csv', sep=',', names=['from', 'to', 'rate'], index_col=0)  # load data from dataset
 # df = pd.read_csv('C:/Users/ASUS/Desktop/project/Core-periphery-Structures/dataset/soc-sign-bitcoinotc-with-no-time.csv', sep=',',usecols=[0,1], names=['source', 'target'])
 df = pd.read_csv('dataset/soc-sign-bitcoinotc.csv',usecols=[0,1,2], names=['source', 'target', 'rate'])
-print(df)
+# print(df)
 G = nx.from_pandas_edgelist(df)
 
-print(nx.info(G))
+# print(nx.info(G))
 
 
 algorithm = cpnet.KM_config()
@@ -19,10 +19,17 @@ algorithm.detect(G)
 c = algorithm.get_pair_id()
 x = algorithm.get_coreness()
 
+kmcon = cpnet.KM_config()
+kmcon.detect(G)
+a = kmcon.get_pair_id()
+b = kmcon.get_coreness()
 
-print('Name\tPairID\tCoreness')
-for key, value in sorted(c.items(), key=lambda x: x[1]):
-    print('%s\t%d\t%f' %(key, c[key], x[key]))
+for key, value in b.items():
+    print(key, " -> ", value)
+
+# print('Name\tPairID\tCoreness')
+# for key, value in sorted(c.items(), key=lambda x: x[1]):
+#     print('%s\t%d\t%f' %(key, c[key], x[key]))
 
 # file = open("result/bitcoinotc.txt", "w")  # make the result as a txt file
 # file.write('Name\tPairID\tCoreness\n')

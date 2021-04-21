@@ -20,12 +20,37 @@ from csv import reader
 # mycolist = ['2', '4', '1289241911.72836']
 # print(ds[mycolist])
 
-g = nx.Graph()
+df = pd.read_csv('dataset/soc-sign-bitcoinotc.csv',usecols=[0,1,2], names=['source', 'target', 'rate'])
+# print(df)
+g = nx.from_pandas_edgelist(df)
 
-with open('dataset/soc-sign-bitcoinotc.csv') as read_obj:
-    csv_reader = reader(read_obj)
-    for row in csv_reader:
-        # print(row[2])
-        g.add_edge(row[0], row[1], weight = row[2])
+# print(nx.info(g))
 
-print(nx.info(g))
+kmconfig = cpnet.KM_config()
+kmconfig.detect(g)
+a = kmconfig.get_pair_id()
+b = kmconfig.get_coreness()
+
+# Variable to calculate total weight of edge
+edgeWeight = 0
+
+# with open('dataset/soc-sign-bitcoinotc.csv', 'r') as fin:
+#     csv_reader = reader(fin)
+#     for row in csv_reader:
+#         print(row)
+
+# Read csv row wise.
+with open('dataset/soc-sign-bitcoinotc.csv', 'r') as fin:
+    csv_reader = reader(fin)
+    for key, value in b.items():
+        if value > 0:
+            for row in csv_reader:
+                if key is row[0]:
+                    edgeWeight += row[2]
+
+
+
+
+
+
+        
