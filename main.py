@@ -6,7 +6,6 @@ import cpnet
 
 
 # df = pd.read_csv('dataset/soc-sign-bitcoinotc-with no time.csv', sep=',', names=['from', 'to', 'rate'], index_col=0)  # load data from dataset
-# df = pd.read_csv('dataset/soc-sign-bitcoinotc-with no time.csv', sep=',', names=['from', 'to', 'rate'], index_col=0)  # load data from dataset
 # df = pd.read_csv('C:/Users/ASUS/Desktop/project/Core-periphery-Structures/dataset/soc-sign-bitcoinotc-with-no-time.csv', sep=',',usecols=[0,1], names=['source', 'target'])
 df = pd.read_csv('dataset/soc-sign-bitcoinotc.csv',usecols=[0,1,2], names=['source', 'target', 'rate'])
 print(df)
@@ -25,7 +24,7 @@ print('Name\tPairID\tCoreness')
 for key, value in sorted(c.items(), key=lambda x: x[1]):
     print('%s\t%d\t%f' %(key, c[key], x[key]))
 
-# file = open("bitcoinotc.txt", "w")  # make the result as a txt file
+# file = open("result/bitcoinotc.txt", "w")  # make the result as a txt file
 # file.write('Name\tPairID\tCoreness\n')
 
 # for key, value in sorted(c.items(), key=lambda x: x[1]):
