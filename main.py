@@ -28,6 +28,7 @@ for key, value in sorted(c.items(), key=lambda x: x[1]):
         core_nodes.append(key)
 print(core_nodes)
 
+print(len(core_nodes)) #number of core nodes
 
 # file = open("result/bitcoinotc.csv", "w", newline='')  # make the result as a csv file
 # # file.write('Name\tPairID\tCoreness\n')
