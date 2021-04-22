@@ -17,7 +17,7 @@ G = transform_graph.transform_graph(graph_path)
 
 core_nodes = get_core_nodes.get_core_nodes(graph_path)
 
-
+print(core_nodes[0])
 
 # print(G.get_edge_data(edge[1]))
 
