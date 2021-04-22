@@ -13,7 +13,7 @@ import get_core_nodes
 
 graph_path = 'dataset/soc-sign-bitcoinotc-with-no-time.csv'
 
-G = transform_graph.trasform_graph(graph_path)
+G = transform_graph.transform_graph(graph_path)
 
 core_nodes = get_core_nodes.get_core_nodes(graph_path)
 

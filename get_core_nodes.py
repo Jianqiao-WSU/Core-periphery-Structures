@@ -5,6 +5,7 @@ import pandas as pd
 import cpnet
 import csv
 
+# get core nodes of the network
 
 def get_core_nodes (graph_path):
     df = pd.read_csv('dataset/soc-sign-bitcoinotc.csv',usecols=[0,1,2], names=['source', 'target', 'rate'])

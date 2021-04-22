@@ -5,7 +5,9 @@ import pandas as pd
 import cpnet
 import csv
 
-def trasform_graph (graph_path):
+# transform the format of the graph, add weight to edge
+
+def transform_graph (graph_path):
     G = nx.Graph()
     for d in pd.read_csv(graph_path,sep=',', header=None, names=['source', 'target', 'Weight'], chunksize=100):
         G.add_weighted_edges_from([tuple(x) for x in d.values])
