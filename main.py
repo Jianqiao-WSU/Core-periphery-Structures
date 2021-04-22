@@ -7,22 +7,36 @@ import csv
 import transform_graph
 import get_core_nodes
 
-# df = pd.read_csv('dataset/soc-sign-bitcoinotc-with no time.csv', sep=',', names=['from', 'to', 'rate'], index_col=0)  # load data from dataset
 # df = pd.read_csv('C:/Users/ASUS/Desktop/project/Core-periphery-Structures/dataset/soc-sign-bitcoinotc-with-no-time.csv', sep=',',usecols=[0,1], names=['source', 'target'])
 
 
 graph_path = 'dataset/soc-sign-bitcoinotc-with-no-time.csv'
+# graph_path = 'dataset/soc-sign-bitcoinalpha-with-no-time.csv'
 
 G = transform_graph.transform_graph(graph_path)
 
 core_nodes = get_core_nodes.get_core_nodes(graph_path)
 
-print(core_nodes[0])
+# print(core_nodes[1])
 
-# print(G.get_edge_data(edge[1]))
+# print(G.edges(core_nodes, data=True))
 
-# for u, v, w in G.edges(data=True):
-#     print(u, v, w['weight'])
+core_edges = G.edges(core_nodes, data=True)
+
+num_of_core_edges = len(core_edges)
+
+edge_weight = 0
+
+for u, v, w in core_edges:
+    # print(w['weight'])
+    edge_weight += w['weight']
+
+print(edge_weight)
+
+avg_weight = edge_weight/num_of_core_edges
+
+print(avg_weight)
+
 
 # file = open("result/bitcoinotc.csv", "w", newline='')  # make the result as a csv file
 # # file.write('Name\tPairID\tCoreness\n')
