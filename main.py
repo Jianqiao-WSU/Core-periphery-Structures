@@ -4,31 +4,25 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import cpnet
 import csv
+import transform_graph
+import get_core_nodes
 
 # df = pd.read_csv('dataset/soc-sign-bitcoinotc-with no time.csv', sep=',', names=['from', 'to', 'rate'], index_col=0)  # load data from dataset
 # df = pd.read_csv('C:/Users/ASUS/Desktop/project/Core-periphery-Structures/dataset/soc-sign-bitcoinotc-with-no-time.csv', sep=',',usecols=[0,1], names=['source', 'target'])
-df = pd.read_csv('dataset/soc-sign-bitcoinotc.csv',usecols=[0,1,2], names=['source', 'target', 'rate'])
-print(df)
-G = nx.from_pandas_edgelist(df)
-
-print(nx.info(G))
 
 
-algorithm = cpnet.KM_config()
-algorithm.detect(G)
-c = algorithm.get_pair_id()
-x = algorithm.get_coreness()
+graph_path = 'dataset/soc-sign-bitcoinotc-with-no-time.csv'
 
-core_nodes = []
-print('Name\tPairID\tCoreness')
-for key, value in sorted(c.items(), key=lambda x: x[1]):
-    
-    if(x[key] == 1):
-        print('%s\t%d\t%f' %(key, c[key], x[key]))
-        core_nodes.append(key)
-print(core_nodes)
+G = transform_graph.trasform_graph(graph_path)
 
-print(len(core_nodes)) #number of core nodes
+core_nodes = get_core_nodes.get_core_nodes(graph_path)
+
+
+
+# print(G.get_edge_data(edge[1]))
+
+# for u, v, w in G.edges(data=True):
+#     print(u, v, w['weight'])
 
 # file = open("result/bitcoinotc.csv", "w", newline='')  # make the result as a csv file
 # # file.write('Name\tPairID\tCoreness\n')
