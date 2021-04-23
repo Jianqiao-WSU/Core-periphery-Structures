@@ -9,7 +9,7 @@ import get_core_nodes
 
 # df = pd.read_csv('C:/Users/ASUS/Desktop/project/Core-periphery-Structures/dataset/soc-sign-bitcoinotc-with-no-time.csv', sep=',',usecols=[0,1], names=['source', 'target'])
 
-
+#graph_path = 'C:/Users/ASUS/Desktop/project/Core-periphery-Structures/dataset/soc-sign-bitcoinotc-with-no-time.csv'
 graph_path = 'dataset/soc-sign-bitcoinotc-with-no-time.csv'
 # graph_path = 'dataset/soc-sign-bitcoinalpha-with-no-time.csv'
 
