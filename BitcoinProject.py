@@ -19,36 +19,46 @@ from csv import reader
 
 # mycolist = ['2', '4', '1289241911.72836']
 # print(ds[mycolist])
-
-df = pd.read_csv('dataset/soc-sign-bitcoinotc.csv',usecols=[0,1,2], names=['source', 'target', 'rate'])
+path = '/Users/parikshitpanwar/Desktop/Library/Elements of Network Science/Project/Core-periphery-Structures-main/dataset/soc-sign-bitcoinotc.csv'
+df = pd.read_csv(path,usecols=[0,1,2], names=['source', 'target', 'rate'])
 # print(df)
-g = nx.from_pandas_edgelist(df)
 
-print(nx.info(g))
+g = nx.DiGraph()
+
+for d in pd.read_csv(path,sep=',', header=None, names=['source', 'target', 'Weight'], chunksize=100):
+    g.add_weighted_edges_from([tuple(x) for x in d.values])
+
+# print(nx.info(g))
 
 kmconfig = cpnet.KM_config()
 kmconfig.detect(g)
 a = kmconfig.get_pair_id()
 b = kmconfig.get_coreness()
 
-# Variable to calculate total weight of edge
-edgeWeight = 0
-
+coreNodes = []
 # with open('dataset/soc-sign-bitcoinotc.csv', 'r') as fin:
 #     csv_reader = reader(fin)
 #     for row in csv_reader:
 #         print(row)
 
-df.sort_values(["source"], axis=0,
-                 ascending=True, inplace=True)
-
-sourceList = []
-
-for key, value in b.items():
+for key, value in sorted(b.items()):
     if value > 0:
-        sourceList.append(key)
+        coreNodes.append(key)
     
-print(sourceList)
+coreEdges = g.edges(coreNodes, data = True)
+
+numOfCoreEdges = len(coreEdges)
+
+# Variable to calculate total weight of edge
+edgeWeight = 0
+
+for u, v, w in coreEdges:
+    edgeWeight += w['weight']
+
+trust = edgeWeight/numOfCoreEdges
+
+print('trust : ', trust)
+
 
 # Read csv row wise.
 # with open('dataset/soc-sign-bitcoinotc.csv', 'r') as fin:
