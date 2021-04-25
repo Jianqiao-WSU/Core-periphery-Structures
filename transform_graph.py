@@ -18,6 +18,7 @@ def transform_graph (graph_path):
     # df = pd.DataFrame(G.edges(data=True), columns = ['source', 'target', 'weight'])
     # df.set_index('source', inplace=True)
     # df.to_csv('result/bitcoin/bitcoinotc_transformed.csv')
+    # df.to_csv('result/bitcoin/bitcoinalpha_transformed.csv')
 
     return G
     

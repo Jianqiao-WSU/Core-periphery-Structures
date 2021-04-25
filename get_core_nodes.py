@@ -42,12 +42,22 @@ def get_core_nodes (graph_path):
 
     # write the output coreness file
     # with open('result/bitcoin/bitcoinotc_coreness.csv', 'w', newline ='') as f:
+    # with open('result/bitcoin/bitcoinalpha_coreness.csv', 'w', newline ='') as f:
     #     writer = csv.writer(f)
     #     header = ['Node ID', 'Pair ID', 'Coreness']
     #     writer.writerow(header)
     #     # writer.writerows(result.items())
     #     for key, values in result.items():
     #         writer.writerow([key, values[0], values[1]])
+
+
+    # fig = plt.figure(figsize=(8, 6))
+    # ax = plt.gca()
+    # ax, pos = cpnet.draw(G, c, x, ax)
+    # ax, _ = cpnet.draw(G, c, x, ax, pos=pos)
+    # nx.draw_networkx_labels(G, pos)
+
+    # plt.show()
 
     return core_nodes
 
