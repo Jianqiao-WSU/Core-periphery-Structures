@@ -6,9 +6,7 @@ import random
 
 G = nx.karate_club_graph()
 print(G)
-alg = cpnet.BE() # Load the Borgatti-Everett algorithm
-alg = cpnet.MINRES()
-alg.detect(G)
+
 kmconfig = cpnet.KM_config()
 kmconfig.detect(G)
 c = kmconfig.get_pair_id()

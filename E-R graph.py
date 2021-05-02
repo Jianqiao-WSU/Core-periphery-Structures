@@ -6,8 +6,8 @@ import cpnet
 
 
 # read E-R random graph
-n=40
-p=10
+n= 80
+p= 0.1
 g = nx.erdos_renyi_graph(n, p, seed=None, directed=False)
 
 algorithm = cpnet.KM_config()
