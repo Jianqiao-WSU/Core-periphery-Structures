@@ -12,26 +12,16 @@ graph_path = 'dataset/soc-sign-bitcoinotc.csv'
 # graph_path = 'dataset/soc-sign-bitcoinalpha.csv'
 
 G = transform_graph.transform_graph(graph_path)
-print(nx.info(G))
 
 # Get the list of core nodes
-core_nodes, periphery_nodes = get_core_nodes.get_core_nodes(graph_path)
+core_nodes = get_core_nodes.get_core_nodes(graph_path)
 
 # Get the list of core nodes'edges
 core_edges = G.edges(core_nodes, data=True)
 
-# print(core_edges)
-
 num_of_core_edges = len(core_edges)
 
-print("Total number of core node's edges: ", num_of_core_edges)
-
-
-
-periphery_edges = G.edges(periphery_nodes, data=True)
-num_of_periphery_edges = len(periphery_edges)
-print("Total number of periphery node's edges: ", num_of_periphery_edges)
-
+# print("Total number of core node's edges: ", num_of_core_edges)
 
 edge_weight = 0
 
@@ -39,7 +29,7 @@ for u, v, w in core_edges:
     # print(w['weight'])
     edge_weight += w['weight']
 
-print("Total weight of core node's edges: ", edge_weight)
+# print("Total weight of core node's edges: ", edge_weight)
 
 avg_weight = edge_weight/num_of_core_edges
 
